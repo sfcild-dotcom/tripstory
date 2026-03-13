@@ -22,14 +22,14 @@ export default function StepOne({ onNext, defaultValues }: Props) {
   return (
     <div className="max-w-xl mx-auto">
       <div className="mb-10">
-        <h1 className="text-3xl font-display font-bold text-amber-400 mb-2">여행 정보 입력</h1>
-        <p className="text-stone-400 text-sm">키워드와 숙소명을 입력하면 AI가 감각적인 출장 후기를 작성해드려요.</p>
+        <h1 className="text-3xl font-display font-bold text-amber-600 mb-2 text-center">여행 정보 입력</h1>
+        <p className="text-gray-500 text-sm text-center">키워드와 숙소명을 입력하면 AI가 감각적인 출장 후기를 작성해드려요.</p>
       </div>
 
       <div className="space-y-6">
         {/* 키워드 */}
         <div>
-          <label className="block text-sm font-medium text-stone-300 mb-2">
+          <label className="block text-sm font-medium text-gray-700 mb-2">
             여행 키워드 <span className="text-amber-500">*</span>
           </label>
           <input
@@ -37,14 +37,14 @@ export default function StepOne({ onNext, defaultValues }: Props) {
             value={keyword}
             onChange={e => setKeyword(e.target.value)}
             placeholder="예: 호치민 비즈니스클래스, 베트남 항공"
-            className="w-full bg-stone-900 border border-stone-700 rounded-lg px-4 py-3 text-stone-100 placeholder-stone-600 focus:outline-none focus:border-amber-500 focus:ring-1 focus:ring-amber-500 transition"
+            className="w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-gray-800 placeholder-gray-400 focus:outline-none focus:border-amber-500 focus:ring-1 focus:ring-amber-500 transition"
           />
-          <p className="text-xs text-stone-600 mt-1">항공편, 숙소명, 여행 테마 등을 입력하세요</p>
+          <p className="text-xs text-gray-400 mt-1">항공편, 숙소명, 여행 테마 등을 입력하세요</p>
         </div>
 
         {/* 회사명 */}
         <div>
-          <label className="block text-sm font-medium text-stone-300 mb-2">
+          <label className="block text-sm font-medium text-gray-700 mb-2">
             숙소 / 브랜드명 <span className="text-amber-500">*</span>
           </label>
           <input
@@ -52,13 +52,13 @@ export default function StepOne({ onNext, defaultValues }: Props) {
             value={companyName}
             onChange={e => setCompanyName(e.target.value)}
             placeholder="예: 노보텔 사이공센터, 롯데호텔 하노이"
-            className="w-full bg-stone-900 border border-stone-700 rounded-lg px-4 py-3 text-stone-100 placeholder-stone-600 focus:outline-none focus:border-amber-500 focus:ring-1 focus:ring-amber-500 transition"
+            className="w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-gray-800 placeholder-gray-400 focus:outline-none focus:border-amber-500 focus:ring-1 focus:ring-amber-500 transition"
           />
         </div>
 
         {/* 톤 선택 */}
         <div>
-          <label className="block text-sm font-medium text-stone-300 mb-3">글쓰기 톤</label>
+          <label className="block text-sm font-medium text-gray-700 mb-3">글쓰기 톤</label>
           <div className="grid grid-cols-3 gap-3">
             {TONES.map(t => (
               <button
@@ -66,13 +66,13 @@ export default function StepOne({ onNext, defaultValues }: Props) {
                 onClick={() => setTone(t.value)}
                 className={`p-4 rounded-xl border text-left transition-all duration-200 ${
                   tone === t.value
-                    ? "border-amber-500 bg-amber-500/10 text-amber-300"
-                    : "border-stone-700 bg-stone-900 text-stone-400 hover:border-stone-600"
+                    ? "border-amber-500 bg-amber-50 text-amber-600"
+                    : "border-gray-200 bg-white text-gray-500 hover:border-amber-300"
                 }`}
               >
                 <div className="text-2xl mb-2">{t.emoji}</div>
                 <div className="text-sm font-medium">{t.label}</div>
-                <div className="text-xs mt-1 text-stone-500">{t.desc}</div>
+                <div className="text-xs mt-1 text-gray-400">{t.desc}</div>
               </button>
             ))}
           </div>
@@ -84,8 +84,8 @@ export default function StepOne({ onNext, defaultValues }: Props) {
           disabled={!canNext}
           className={`w-full py-4 rounded-xl font-semibold text-sm tracking-wide transition-all duration-200 ${
             canNext
-              ? "bg-amber-500 text-stone-950 hover:bg-amber-400 shadow-lg shadow-amber-500/20"
-              : "bg-stone-800 text-stone-600 cursor-not-allowed"
+              ? "bg-amber-500 text-white hover:bg-amber-400 shadow-lg shadow-amber-500/20"
+              : "bg-gray-200 text-gray-400 cursor-not-allowed"
           }`}
         >
           다음 단계 → 사진 업로드

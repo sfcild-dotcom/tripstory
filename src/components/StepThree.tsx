@@ -34,13 +34,13 @@ export default function StepThree({ article, title, onReset, isStreaming = false
       }
       if (line.match(/^[①②③④⑤⑥⑦⑧⑨⑩⑪⑫⑬⑭]/)) {
         return (
-          <p key={i} className="text-stone-200 leading-relaxed mb-4 pl-1 border-l-2 border-amber-700/40 pl-4">
+          <p key={i} className="text-gray-700 leading-relaxed mb-4 border-l-2 border-amber-300 pl-4">
             {line}
           </p>
         );
       }
       if (line.trim() === "") return <div key={i} className="mb-2" />;
-      return <p key={i} className="text-stone-300 leading-relaxed mb-3">{line}</p>;
+      return <p key={i} className="text-gray-600 leading-relaxed mb-3">{line}</p>;
     });
   };
 
@@ -76,10 +76,10 @@ export default function StepThree({ article, title, onReset, isStreaming = false
     <div className="max-w-3xl mx-auto">
       <div className="mb-6 flex items-start justify-between gap-4">
         <div>
-          <h1 className="text-3xl font-display font-bold text-amber-400 mb-1">
+          <h1 className="text-3xl font-display font-bold text-amber-600 mb-1">
             {isStreaming ? "✍️ 기사 작성 중..." : "기사 생성 완료!"}
           </h1>
-          <p className="text-stone-500 text-sm">
+          <p className="text-gray-400 text-sm">
             {isStreaming
               ? `${charCount.toLocaleString()}자 생성 중...`
               : `총 ${charCount.toLocaleString()}자 · Claude AI Vision 분석 완료`}
@@ -87,7 +87,7 @@ export default function StepThree({ article, title, onReset, isStreaming = false
         </div>
         <button
           onClick={onReset}
-          className="flex-none px-4 py-2 rounded-lg border border-stone-700 text-stone-400 hover:text-stone-200 hover:border-stone-600 transition text-sm"
+          className="flex-none px-4 py-2 rounded-lg border border-stone-700 text-gray-400 hover:text-gray-700 hover:border-stone-600 transition text-sm"
         >
           ↩ 처음부터
         </button>
@@ -100,7 +100,7 @@ export default function StepThree({ article, title, onReset, isStreaming = false
           className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all ${
             copied
               ? "bg-green-600 text-white"
-              : "bg-stone-800 text-stone-300 hover:bg-stone-700"
+              : "bg-gray-100 text-gray-600 hover:bg-gray-200"
           }`}
         >
           {copied ? "✓ 복사됨!" : "📋 복사"}
@@ -120,7 +120,7 @@ export default function StepThree({ article, title, onReset, isStreaming = false
       </div>
 
       {/* 기사 본문 */}
-      <div className="bg-stone-900 border border-stone-800 rounded-2xl p-8">
+      <div className="bg-white border border-gray-200 rounded-2xl p-8 shadow-sm">
         <div className="prose prose-invert max-w-none">
           {renderArticle(article)}
           {isStreaming && (
@@ -129,18 +129,18 @@ export default function StepThree({ article, title, onReset, isStreaming = false
         </div>
       </div>
 
-      <div className="mt-6 p-4 bg-amber-500/5 border border-amber-500/20 rounded-xl text-center text-xs text-stone-500">
+      <div className="mt-6 p-4 bg-amber-50 border border-amber-100 rounded-xl text-center text-xs text-gray-400">
         💡 기사는 Claude AI가 업로드된 사진을 직접 분석하여 작성했습니다.
       </div>
 
       {/* 사진 순서 분석표 */}
       {photoAnalysis.length > 0 && (
         <div className="mt-8">
-          <h2 className="text-lg font-display font-semibold text-amber-400 mb-3">📷 사진 순서 분석</h2>
-          <div className="overflow-x-auto rounded-xl border border-stone-800">
+          <h2 className="text-lg font-display font-semibold text-amber-600 mb-3">📷 사진 순서 분석</h2>
+          <div className="overflow-x-auto rounded-xl border border-gray-200">
             <table className="w-full text-sm">
               <thead>
-                <tr className="bg-stone-900 text-stone-400 text-xs">
+                <tr className="bg-gray-50 text-gray-400 text-xs">
                   <th className="px-3 py-2 text-left w-12">사진</th>
                   <th className="px-3 py-2 text-left">실제 장면</th>
                   <th className="px-3 py-2 text-left">기대 순서</th>
@@ -150,10 +150,10 @@ export default function StepThree({ article, title, onReset, isStreaming = false
               </thead>
               <tbody>
                 {photoAnalysis.map((row) => (
-                  <tr key={row.num} className="border-t border-stone-800 hover:bg-stone-900/50">
-                    <td className="px-3 py-2 text-stone-500 font-mono">{row.num}</td>
-                    <td className="px-3 py-2 text-stone-200">{row.actual}</td>
-                    <td className="px-3 py-2 text-stone-400">{row.expected}</td>
+                  <tr key={row.num} className="border-t border-gray-100 hover:bg-gray-50">
+                    <td className="px-3 py-2 text-gray-400 font-mono">{row.num}</td>
+                    <td className="px-3 py-2 text-gray-700">{row.actual}</td>
+                    <td className="px-3 py-2 text-gray-400">{row.expected}</td>
                     <td className="px-3 py-2 text-center">
                       <span className={`inline-block px-2 py-0.5 rounded text-xs font-medium ${
                         row.match === "일치"
@@ -165,7 +165,7 @@ export default function StepThree({ article, title, onReset, isStreaming = false
                         {row.match === "일치" ? "✅ 일치" : row.match === "부분일치" ? "⚠️ 부분" : "❌ 불일치"}
                       </span>
                     </td>
-                    <td className="px-3 py-2 text-stone-500 text-xs italic">
+                    <td className="px-3 py-2 text-gray-400 text-xs italic">
                       {row.flashback || "—"}
                     </td>
                   </tr>
@@ -177,7 +177,7 @@ export default function StepThree({ article, title, onReset, isStreaming = false
       )}
 
       {photoAnalysis.length === 0 && !isStreaming && (
-        <div className="mt-6 text-center text-stone-600 text-xs">사진 분석 결과를 불러오는 중...</div>
+        <div className="mt-6 text-center text-gray-400 text-xs">사진 분석 결과를 불러오는 중...</div>
       )}
     </div>
   );

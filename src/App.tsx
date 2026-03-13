@@ -122,24 +122,24 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-stone-950 text-stone-100 font-body">
+    <div className="min-h-screen bg-gray-50 text-gray-800 font-body">
       {/* Header */}
-      <header className="border-b border-stone-800 px-6 py-4">
-        <div className="max-w-4xl mx-auto flex items-center justify-between">
+      <header className="border-b border-gray-200 bg-white px-6 py-4 shadow-sm">
+        <div className="max-w-2xl mx-auto flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-full bg-amber-500 flex items-center justify-center text-stone-950 font-bold text-sm">✈</div>
-            <span className="text-lg font-display font-semibold tracking-wide text-amber-400">TripStory AI</span>
+            <div className="w-8 h-8 rounded-full bg-amber-500 flex items-center justify-center text-white font-bold text-sm">✈</div>
+            <span className="text-lg font-display font-semibold tracking-wide text-amber-600">TripStory AI</span>
           </div>
           {/* Step Indicator */}
           <div className="flex items-center gap-2">
             {[1, 2, 3].map((s) => (
               <div key={s} className="flex items-center gap-2">
                 <div className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold transition-all duration-300 ${
-                  step === s ? "bg-amber-500 text-stone-950" :
-                  step > s ? "bg-amber-700 text-amber-200" :
-                  "bg-stone-800 text-stone-500"
+                  step === s ? "bg-amber-500 text-white" :
+                  step > s ? "bg-amber-300 text-white" :
+                  "bg-gray-200 text-gray-400"
                 }`}>{s}</div>
-                {s < 3 && <div className={`w-8 h-px transition-all duration-300 ${step > s ? "bg-amber-600" : "bg-stone-700"}`} />}
+                {s < 3 && <div className={`w-8 h-px transition-all duration-300 ${step > s ? "bg-amber-400" : "bg-gray-300"}`} />}
               </div>
             ))}
           </div>
@@ -147,7 +147,7 @@ export default function App() {
       </header>
 
       {/* Main */}
-      <main className="max-w-4xl mx-auto px-6 py-10">
+      <main className="max-w-2xl mx-auto px-6 py-10">
         {step === 1 && <StepOne onNext={handleStepOneNext} defaultValues={storyInput} />}
         {step === 2 && (
           <StepTwo
